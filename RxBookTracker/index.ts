@@ -1,4 +1,4 @@
-import { concat, filter, fromEvent, interval, mergeMap, Observable, tap } from "rxjs";
+import { catchError, concat, filter, fromEvent, interval, mergeMap, Observable, of, tap, throwError } from "rxjs";
 import { allBooks, allReaders, type Book, type Reader } from "./data";
 import { fromFetch } from 'rxjs/fetch';
 import { ajax } from 'rxjs/ajax';
@@ -40,6 +40,7 @@ fromEvent(showReadersButton, 'click').subscribe(onShowReaders);
 //data from API call
 const readers$ = fromFetch('http://localhost:3000/api/readers')
 const books$ = fromFetch('http://localhost:3000/api/books')
+const error500$ = fromFetch('http://localhost:3000/api/errors/500')
 
 const onLoadReaders = () => {
     readers$.subscribe({
@@ -158,7 +159,14 @@ const booksWithOperators$ = books$.pipe(
     tap((data) => console.log('tap1', data)),
     mergeMap((data: Book[]) => data),
     filter((book: Book) => book.publicationYear < 1950),
-    tap((data) => console.log('tap2', data))
+    tap((data) => console.log('tap2', data)),
+    // catchError(err => of({title: 'Error', author: 'Error', publicationYear: 0}))
+    // catchError(err => {
+    //     throw new Error('Something went wrong');
+    // })
 );
 
-booksWithOperators$.subscribe((result) => console.log('operators result', result))
+booksWithOperators$.subscribe({
+    next: (result) => console.log('VALUE:', result),
+    error: (err) => console.log('ERROR:', err),
+})
