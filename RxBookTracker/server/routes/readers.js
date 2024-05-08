@@ -6,9 +6,7 @@ var router = express.Router();
 /* GET all books and POST new readers */
 router.route('/')
     .get(function(req, res) {
-        console.log('1')
         var data = getReaderData();
-        console.log('2')
         res.status(200);
         res.send(data);
     })
