@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "target": "es5",
     "typeRoots": [
