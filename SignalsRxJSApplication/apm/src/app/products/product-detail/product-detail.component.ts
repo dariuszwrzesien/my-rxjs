@@ -17,8 +17,7 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
   errorMessage = '';
 
   private productService = inject(ProductService);
-
-  productSubscription!: Subscription;
+  private productSubscription = new Subscription();
 
   // Product to display
   product: Product | null = null;
