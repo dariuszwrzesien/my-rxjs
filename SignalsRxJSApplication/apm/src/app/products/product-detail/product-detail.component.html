@@ -1,5 +1,5 @@
 <div class="card"
-     *ngIf="product && !errorMessage">
+     *ngIf="!errorMessage && (product$ | async) as product">
   <div class="card-header">
     {{pageTitle}}
   </div>

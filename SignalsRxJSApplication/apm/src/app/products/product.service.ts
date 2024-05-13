@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, map, Observable, of, share, shareReplay, switchMap, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, combineLatest, filter, map, Observable, of, share, shareReplay, switchMap, tap, throwError } from 'rxjs';
 import { Product } from './product';
 import { ReviewService } from '../reviews/review.service';
 import { Review } from '../reviews/review';
@@ -13,6 +13,9 @@ export class ProductService {
   private http = inject(HttpClient);
   private reviewService = inject(ReviewService);
 
+  private productSelectedSubject = new BehaviorSubject<number | undefined>(undefined);
+  readonly productSelected$ = this.productSelectedSubject.asObservable();
+
   readonly products$: Observable<Product[]> = this.http.get<Product[]>(this.productsUrl)
   .pipe(
     tap(data => console.log('Products: ', JSON.stringify(data))),
@@ -21,14 +24,33 @@ export class ProductService {
     catchError(err => this.handleError(err))
   );
 
-  getProduct(id: number): Observable<Product> {
-    const url = `${this.productsUrl}/${id}`;
-    return this.http.get<Product>(url).pipe(
-      switchMap(product => this.getProductWithReviews(product)),
-      //https://blog.angular-university.io/rxjs-higher-order-mapping/
-      tap(x => console.log(x)),
-      catchError(err => this.handleError(err))
-    );
+  readonly product1$ = this.productSelected$
+  .pipe(
+    filter(Boolean),
+    switchMap(id => {
+      const url = `${this.productsUrl}/${id}`;
+      return this.http.get<Product>(url).pipe(
+        switchMap(product => this.getProductWithReviews(product)),
+        //https://blog.angular-university.io/rxjs-higher-order-mapping/
+        catchError(err => this.handleError(err))
+      );
+    }),
+    shareReplay(1)
+  );
+
+  product$ = combineLatest([
+    this.productSelected$,
+    this.products$
+  ]).pipe(
+    map(([selectedProductId, products]) => products.find(product => product.id === selectedProductId)),
+    filter(Boolean),
+    switchMap(product => this.getProductWithReviews(product)),
+    //https://blog.angular-university.io/rxjs-higher-order-mapping/
+    catchError(err => this.handleError(err))
+  );
+
+  productSelected(selectedProductId: number): void {
+    this.productSelectedSubject.next(selectedProductId);
   }
 
   getProductWithReviews(product: Product): Observable<Product> {
