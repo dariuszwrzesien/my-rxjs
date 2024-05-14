@@ -30,4 +30,3 @@ export class CartItemComponent {
     this.cartService.removeFromCart(this.item())
   }
 }
-
