@@ -20,7 +20,12 @@ export class CartService {
   totalPrice = computed(() => this.cartSubtotal() + this.deliveryFee() + this.tax());
 
   addToCart(product: Product) {
-    this.cartItems.update(items => [...items, { product, quantity: 1 }]);
+    this.cartItems.update(items => {
+      if (items.some(item => item.product === product)) {
+        return items.map(item => item.product === product ? { ...item, quantity: item.quantity + 1 } : item);
+      }
+      return [...items, { product, quantity: 1 }];
+    });
   }
 
   updateQuantity(cartItem: CartItem, quantity: number) {

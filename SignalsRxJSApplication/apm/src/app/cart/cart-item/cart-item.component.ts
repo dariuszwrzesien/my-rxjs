@@ -37,5 +37,4 @@ export class CartItemComponent {
   }
 }
 
-// dodanie nowego itemu jak jest już taki dodany powinno zwiększyć ilość a nie dodawać nowy element
 // przerobić zahardkodowane 8 qtyArr na dowolną wartość
