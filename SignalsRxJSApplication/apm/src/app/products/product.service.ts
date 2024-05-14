@@ -43,7 +43,9 @@ export class ProductService {
     )
 
   private productsResult = toSignal(this.productsResult$, {
-    initialValue: { data: [] } as Result<Product[]>,
+    initialValue: {
+      data: [],
+    } as Result<Product[]>,
   })
   products = computed(() => this.productsResult().data)
   productsError = computed(() => this.productsResult().error)
@@ -80,11 +82,18 @@ export class ProductService {
     switchMap((product) => this.getProductWithReviews(product)),
     //https://blog.angular-university.io/rxjs-higher-order-mapping/
     catchError((err) => this.handleError(err)),
-    map((product) => ({ data: product }) as Result<Product>)
+    map(
+      (product) =>
+        ({
+          data: product,
+        }) as Result<Product>
+    )
   )
 
   private productResult = toSignal(this.productResult$, {
-    initialValue: { data: undefined } as Result<Product>,
+    initialValue: {
+      data: undefined,
+    } as Result<Product>,
   })
   product = computed(() => this.productResult().data)
   productError = computed(() => this.productResult()?.error)
@@ -98,7 +107,13 @@ export class ProductService {
       return this.http
         .get<Review[]>(this.reviewService.getReviewUrl(product.id))
         .pipe(
-          map((reviews) => ({ ...product, reviews }) as Product),
+          map(
+            (reviews) =>
+              ({
+                ...product,
+                reviews,
+              }) as Product
+          ),
           catchError((err) => this.handleError(err))
         )
     }

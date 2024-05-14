@@ -7,7 +7,7 @@ import { CartService } from '../cart.service';
   selector: 'sw-cart-list',
   standalone: true,
   imports: [CartItemComponent, NgFor, NgIf],
-  templateUrl: 'cart-list.component.html'
+  templateUrl: 'cart-list.component.html',
 })
 export class CartListComponent {
   pageTitle = 'Cart';

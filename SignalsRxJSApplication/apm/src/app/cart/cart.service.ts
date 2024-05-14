@@ -33,7 +33,10 @@ export class CartService {
       if (items.some((item) => item.product === product)) {
         return items.map((item) =>
           item.product === product
-            ? { ...item, quantity: item.quantity + 1 }
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
             : item
         )
       }

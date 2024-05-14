@@ -3,7 +3,10 @@ import { HomeComponent } from './home/home.component'
 import { PageNotFoundComponent } from './utilities/page-not-found.component'
 
 export const routes: Routes = [
-  { path: 'welcome', component: HomeComponent },
+  {
+    path: 'welcome',
+    component: HomeComponent,
+  },
   {
     path: 'products',
     loadComponent: () =>
@@ -18,6 +21,13 @@ export const routes: Routes = [
         (c) => c.CartShellComponent
       ),
   },
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent },
+  {
+    path: '',
+    redirectTo: 'welcome',
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+  },
 ]

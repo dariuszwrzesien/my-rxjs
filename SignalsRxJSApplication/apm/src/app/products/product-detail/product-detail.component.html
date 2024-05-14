@@ -1,10 +1,15 @@
 <div class="card" *ngIf="!errorMessage() && product() as product">
-  <div class="card-header">Product Details: {{ product.productName }}</div>
+  <div class="card-header">
+    Product Details:
+    {{ product.productName }}
+  </div>
 
   <div class="card-body">
     <div class="row">
       <div class="col-md-2">Name:</div>
-      <div class="col-md-6">{{ product.productName }}</div>
+      <div class="col-md-6">
+        {{ product.productName }}
+      </div>
       <div class="col-md-3">
         <button class="btn btn-primary" (click)="addToCart(product)">
           Add to Cart
@@ -13,11 +18,15 @@
     </div>
     <div class="row">
       <div class="col-md-2">Code:</div>
-      <div class="col-md-6">{{ product.productCode }}</div>
+      <div class="col-md-6">
+        {{ product.productCode }}
+      </div>
     </div>
     <div class="row">
       <div class="col-md-2">Description:</div>
-      <div class="col-md-6">{{ product.description }}</div>
+      <div class="col-md-6">
+        {{ product.description }}
+      </div>
     </div>
     <div class="row">
       <div class="col-md-2">Price:</div>
@@ -27,7 +36,9 @@
     </div>
     <div class="row">
       <div class="col-md-2">In Stock:</div>
-      <div class="col-md-6">{{ product.quantityInStock ?? 0 }}</div>
+      <div class="col-md-6">
+        {{ product.quantityInStock ?? 0 }}
+      </div>
     </div>
 
     <div class="table-responsive">
@@ -42,7 +53,9 @@
         <tbody>
           <tr *ngFor="let review of product.reviews">
             <td>{{ review.title }}</td>
-            <td>{{ review.userName }}</td>
+            <td>
+              {{ review.userName }}
+            </td>
             <td>{{ review.text }}</td>
           </tr>
         </tbody>

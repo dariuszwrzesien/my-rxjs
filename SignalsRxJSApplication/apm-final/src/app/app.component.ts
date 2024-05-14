@@ -8,7 +8,7 @@ import { CartService } from './cart/cart.service';
   standalone: true,
   imports: [RouterLinkActive, RouterLink, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   pageTitle = 'Acme Product Management';
@@ -16,5 +16,4 @@ export class AppComponent {
   private cartService = inject(CartService);
 
   cartCount = this.cartService.cartCount;
-
 }

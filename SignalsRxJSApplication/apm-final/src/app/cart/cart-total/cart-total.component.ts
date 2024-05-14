@@ -6,10 +6,9 @@ import { CartService } from '../cart.service';
   selector: 'sw-cart-total',
   templateUrl: './cart-total.component.html',
   standalone: true,
-  imports: [NgIf, CurrencyPipe]
+  imports: [NgIf, CurrencyPipe],
 })
 export class CartTotalComponent {
-
   private cartService = inject(CartService);
 
   // Reference the service signals for binding
@@ -18,5 +17,4 @@ export class CartTotalComponent {
   deliveryFee = this.cartService.deliveryFee;
   tax = this.cartService.tax;
   totalPrice = this.cartService.totalPrice;
-
 }

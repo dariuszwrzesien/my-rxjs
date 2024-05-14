@@ -9,10 +9,9 @@ import { CartService } from 'src/app/cart/cart.service';
   selector: 'pm-product-detail',
   templateUrl: './product-detail.component.html',
   standalone: true,
-  imports: [AsyncPipe, NgIf, NgFor, CurrencyPipe]
+  imports: [AsyncPipe, NgIf, NgFor, CurrencyPipe],
 })
 export class ProductDetailComponent {
-
   private productService = inject(ProductService);
   private cartService = inject(CartService);
 
@@ -24,7 +23,8 @@ export class ProductDetailComponent {
   pageTitle = computed(() =>
     this.product()
       ? `Product Detail for: ${this.product()?.productName}`
-      : 'Product Detail')
+      : 'Product Detail',
+  );
 
   // This does not currently prevent the user from
   // ordering more quantity than available in inventory

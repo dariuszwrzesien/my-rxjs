@@ -8,7 +8,7 @@ import { ProductService } from '../product.service';
   selector: 'pm-product-list',
   templateUrl: './product-list.component.html',
   standalone: true,
-  imports: [AsyncPipe, NgIf, NgFor, NgClass, ProductDetailComponent]
+  imports: [AsyncPipe, NgIf, NgFor, NgClass, ProductDetailComponent],
 })
 export class ProductListComponent {
   pageTitle = 'Products';

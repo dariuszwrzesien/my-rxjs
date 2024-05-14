@@ -12,7 +12,8 @@ import { CartService } from '../cart.service'
   templateUrl: './cart-item.component.html',
 })
 export class CartItemComponent {
-  @Input({ required: true }) set cartItem(value: CartItem) {
+  @Input({ required: true })
+  set cartItem(value: CartItem) {
     this.item.set(value)
   }
 

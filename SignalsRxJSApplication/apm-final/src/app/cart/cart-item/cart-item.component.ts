@@ -9,11 +9,10 @@ import { CartService } from '../cart.service';
   selector: 'sw-cart-item',
   standalone: true,
   imports: [CurrencyPipe, FormsModule, NgFor, NgIf],
-  templateUrl: './cart-item.component.html'
+  templateUrl: './cart-item.component.html',
 })
 export class CartItemComponent {
-
-  // Use a setter to set the signal 
+  // Use a setter to set the signal
   // when the item is passed in from the parent component
   @Input({ required: true }) set cartItem(ci: CartItem) {
     this.item.set(ci);
@@ -29,7 +28,8 @@ export class CartItemComponent {
 
   // Build an array of numbers from 1 to qty available
   qtyArr = computed<Number[]>(() =>
-    [...Array(this.item().product.quantityInStock).keys()].map(x => x + 1));
+    [...Array(this.item().product.quantityInStock).keys()].map((x) => x + 1),
+  );
 
   // Calculate the extended price
   exPrice = computed(() => this.item().quantity * this.item().product.price);
