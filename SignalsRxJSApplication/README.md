@@ -1,18 +1,27 @@
-# angular-rxjs-signals-fundamentals
+# Apm
 
-Sample code for the ["RxJS and Angular Signal Fundamentals" course at Pluralsight](https://www.pluralsight.com/library/courses/rxjs-angular-signals-fundamentals)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
-Using RxJS and signals with reactive programming techniques, our applications are more responsive to user actions and state changes, providing a better user experience with less code.
+## Development server
 
-In this course, we learn the fundamentals of RxJS and signals. And how they are powerful together, improving our state management and reactivity.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Some of the major topics that we cover include:
+## Code scaffolding
 
-1. Demystifying RxJS, breaking down its terms, syntax, and operators
-2. Harnessing the power of Subjects to react effectively to user actions
-3. Leveraging signals for easier state management and improved change detection
-4. And using RxJS and Signals together, to get the best from both
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-By the end of this course, you’ll have the skills and knowledge to better manage state and build more reactive Angular applications using RxJS and signals.
+## Build
 
-I hope you’ll join me on this exciting journey to learn RxJS and signals with the "RxJS and Angular Signals Fundamentals" course, at Pluralsight.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
