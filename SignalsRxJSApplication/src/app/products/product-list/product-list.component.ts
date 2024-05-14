@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core'
 import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common'
 import { ProductDetailComponent } from '../product-detail/product-detail.component'
 import { ProductService } from '../product.service'
-import { catchError, EMPTY, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'pm-product-list',

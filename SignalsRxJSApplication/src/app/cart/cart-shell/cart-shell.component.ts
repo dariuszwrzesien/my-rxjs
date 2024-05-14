@@ -7,11 +7,11 @@ import { CartListComponent } from '../cart-list/cart-list.component'
   imports: [CartListComponent, CartTotalComponent],
   template: `
     <div class="row">
-      <apm-cart-list />
+      <pm-cart-list />
     </div>
     <div class="row">
       <div class="offset-md-6 col-md-6">
-        <apm-cart-total />
+        <pm-cart-total />
       </div>
     </div>
   `,

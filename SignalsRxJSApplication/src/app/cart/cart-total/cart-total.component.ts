@@ -3,7 +3,7 @@ import { NgIf, CurrencyPipe } from '@angular/common'
 import { CartService } from '../cart.service'
 
 @Component({
-  selector: 'apm-cart-total',
+  selector: 'pm-cart-total',
   templateUrl: './cart-total.component.html',
   standalone: true,
   imports: [NgIf, CurrencyPipe],

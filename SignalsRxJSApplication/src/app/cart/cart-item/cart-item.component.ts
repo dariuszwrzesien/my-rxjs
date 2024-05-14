@@ -6,7 +6,7 @@ import { CartItem } from '../cart'
 import { CartService } from '../cart.service'
 
 @Component({
-  selector: 'apm-cart-item',
+  selector: 'pm-cart-item',
   standalone: true,
   imports: [CurrencyPipe, FormsModule, NgFor, NgIf],
   templateUrl: './cart-item.component.html',
