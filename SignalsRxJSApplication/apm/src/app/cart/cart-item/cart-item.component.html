@@ -1,5 +1,4 @@
-<div *ngIf='item() as cartItem'>
-
+<div *ngIf="item() as cartItem">
   <div class="row mb-2">
     <div class="col-md-4">
       {{ cartItem.product.productName }}
@@ -8,21 +7,20 @@
       {{ cartItem.product.price | currency }}
     </div>
     <div class="col-md-2 text-center">
-      <input type="number"
-             class="form-control"
-             style="width:60px; margin: 0 auto"
-             [ngModel]="cartItem.quantity"
-             (ngModelChange)="onQuantitySelected(+$event)">
+      <input
+        type="number"
+        class="form-control"
+        style="width: 60px; margin: 0 auto"
+        min="0"
+        max="999"
+        [ngModel]="cartItem.quantity"
+        (ngModelChange)="onQuantityUpdated(+$event)" />
     </div>
     <div class="col-md-2 text-center">
       {{ exPrice() | currency }}
     </div>
     <div class="col-md-2">
-      <button class="btn btn-warning"
-              (click)="removeFromCart()">
-        Delete
-      </button>
+      <button class="btn btn-warning" (click)="removeFromCart()">Delete</button>
     </div>
   </div>
-
 </div>
